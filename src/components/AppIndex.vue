@@ -13,70 +13,16 @@
                   <p align="center"><font size="2"><b>10 Últimas Vagas Publicadas</b></font></p>
                   <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber3">
                     <tr>
-                      <th width="27%"><font size="2">Cargo</font></th>
-                      <th width="52%"><font size="2">Descrição</font></th>
-                      <th width="21%"><font size="2">Cidade</font></th>
-                      <th width="21%">&nbsp;</th>
+                      <th style="width: 27%;"><font size="2">Cargo</font></th>
+                      <th style="width: 52%;"><font size="2">Descrição</font></th>
+                      <th style="width: 21%;"><font size="2">Cidade</font></th>
+                      <th style="width: 21%;">&nbsp;</th>
                     </tr>
-                    <tr>
-                      <td width="27%"><font size="2">Analista JEE</font></td>
-                      <td width="52%">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</td>
-                      <td width="21%"><font size="2">Rio de Janeiro</font></td>
-                      <td width="21%"><font size="2"><a href="a"><span class="material-icons">remove_red_eye</span></a></font></td>
-                    </tr>
-                    <tr>
-                      <td width="27%"><font size="2">Programador Java</font></td>
-                      <td width="52%">Phasellus adipiscing feugiat magna.</td>
-                      <td width="21%"><font size="2">São Paulo</font></td>
-                      <td width="21%"><font size="2"><a href="a"><span class="material-icons">remove_red_eye</span></a></font></td>
-                    </tr>
-                    <tr>
-                      <td width="27%"><font size="2">Gerente de Projetos</font></td>
-                      <td width="52%">Nam pretium nisi.</td>
-                      <td width="21%"><font size="2">Vitória</font></td>
-                      <td width="21%"><font size="2"><a href="a"><span class="material-icons">remove_red_eye</span></a></font></td>
-                    </tr>
-                    <tr>
-                      <td width="27%"><font size="2">Suporte de Rede Wireless</font></td>
-                      <td width="52%">Aenean felis leo, sagittis ac, aliquam sed, matti seu, ligula.</td>
-                      <td width="21%"><font size="2">Brasília</font></td>
-                      <td width="21%"><font size="2"><a href="a"><span class="material-icons">remove_red_eye</span></a></font></td>
-                    </tr>
-                    <tr>
-                      <td width="27%"><font size="2">Arquiteto JEE</font></td>
-                      <td width="52%">Ut pede tortor, sodales a, hendrerit eget, pellentesque in, leo.</td>
-                      <td width="21%"><font size="2">Salvador</font></td>
-                      <td width="21%"><font size="2"><a href="a"><span class="material-icons">remove_red_eye</span></a></font></td>
-                    </tr>
-                    <tr>
-                      <td width="27%"><font size="2">Analista C#</font></td>
-                      <td width="52%">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</td>
-                      <td width="21%"><font size="2">Rio de Janeiro</font></td>
-                      <td width="21%"><font size="2"><a href="a"><span class="material-icons">remove_red_eye</span></a></font></td>
-                    </tr>
-                    <tr>
-                      <td width="27%"><font size="2">Programador Java</font></td>
-                      <td width="52%">Phasellus adipiscing feugiat magna.</td>
-                      <td width="21%"><font size="2">São Paulo</font></td>
-                      <td width="21%"><font size="2"><a href="a"><span class="material-icons">remove_red_eye</span></a></font></td>
-                    </tr>
-                    <tr>
-                      <td width="27%"><font size="2">Gerente de Projetos</font></td>
-                      <td width="52%">Nam pretium nisi.</td>
-                      <td width="21%"><font size="2">Vitória</font></td>
-                      <td width="21%"><font size="2"><a href="a"><span class="material-icons">remove_red_eye</span></a></font></td>
-                    </tr>
-                    <tr>
-                      <td width="27%"><font size="2">Suporte de Rede Wireless</font></td>
-                      <td width="52%">Aenean felis leo, sagittis ac, aliquam sed, mattis eu, ligula.</td>
-                      <td width="21%"><font size="2">Brasília</font></td>
-                      <td width="21%"><font size="2"><a href="a"><span class="material-icons">remove_red_eye</span></a></font></td>
-                    </tr>
-                    <tr>
-                      <td width="27%"><font size="2">Arquiteto C#</font></td>
-                      <td width="52%">Ut pede tortor, sodales a, hendrerit eget, pellentesque in, leo.</td>
-                      <td width="21%"><font size="2">Salvador</font></td>
-                      <td width="21%"><font size="2"><a href="a"><span class="material-icons">remove_red_eye</span></a></font></td>
+                    <tr v-for="vacancy in mockVacancies" :key="vacancy.id">
+                      <td><span style="font-size: small;">{{ vacancy.position }}</span></td>
+                      <td>{{ vacancy.description }}</td>
+                      <td><span style="font-size: small;">{{ vacancy.city }}</span></td>
+                      <td><span style="font-size: small;"><a href="a"><span class="material-icons">remove_red_eye</span></a></span></td>
                     </tr>
                   </table>
                 </td>
@@ -142,7 +88,22 @@
 <script>
 export default {
   name: 'AppIndex',
-  props: { }
+  data() {
+    return {
+      mockVacancies: [
+        { id: 1, position: "Analista JEE", description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.", city: "Rio de Janeiro" },
+        { id: 2, position: "Programador Java", description: "Phasellus adipiscing feugiat magna.", city: "São Paulo" },
+        { id: 3, position: "Gerente de Projetos", description: "Nam pretium nisi.", city: "Vitória" },
+        { id: 4, position: "Suporte de Rede Wireless", description: "Aenean felis leo, sagittis ac, aliquam sed, matti seu, ligula.", city: "Brasília" },
+        { id: 5, position: "Arquiteto JEE", description: "Ut pede tortor, sodales a, hendrerit eget, pellentesque in, leo.", city: "Salvador" },
+        { id: 6, position: "Analista C#", description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.", city: "Rio de Janeiro" },
+        { id: 7, position: "Programador Java", description: "Phasellus adipiscing feugiat magna.", city: "São Paulo" },
+        { id: 8, position: "Gerente de Projetos", description: "	Nam pretium nisi.", city: "Vitória" },
+        { id: 9, position: "Suporte de Rede Wireless", description: "Aenean felis leo, sagittis ac, aliquam sed, mattis eu, ligula.", city: "Brasília" },
+        { id: 10, position: "Arquiteto C#", description: "	Ut pede tortor, sodales a, hendrerit eget, pellentesque in, leo.", city: "Salvador" }
+      ]
+    }
+  }
 }
 </script>
 
