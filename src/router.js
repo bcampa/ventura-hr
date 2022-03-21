@@ -8,12 +8,18 @@ export default createRouter({
     {
       path: "/",
       name: "index",
-      component: AppIndex
+      component: AppIndex,
+      meta: {
+        title: 'VenturaHR - Index',
+      }
     },
     {
       path: "/sign-up",
       name: "signup",
-      component: UserRegistration
+      component: UserRegistration,
+      meta: {
+        title: 'VenturaHR - Cadastrar Usuário',
+      }
     }
   ]
 });
