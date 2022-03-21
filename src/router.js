@@ -10,7 +10,7 @@ export default createRouter({
       name: "index",
       component: AppIndex,
       meta: {
-        title: 'VenturaHR - Index',
+        title: 'VenturaHR',
       }
     },
     {
@@ -18,7 +18,7 @@ export default createRouter({
       name: "signup",
       component: UserRegistration,
       meta: {
-        title: 'VenturaHR - Cadastrar Usuário',
+        title: 'Cadastrar Usuário | VenturaHR',
       }
     }
   ]
