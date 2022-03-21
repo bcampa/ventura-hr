@@ -1,42 +1,42 @@
 <template>
   <div align="center">
     <center>
-      <table border="0" cellpadding="10" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="780" id="AutoNumber1" bgcolor="#FFFFFF">
+      <table border="0" cellpadding="10" cellspacing="0" style="border-collapse: collapse; border-color: #111111; width: 780px; background-color: #FFFFFF;" id="AutoNumber1">
         <tr>
-          <td width="100%" bgcolor="#808080"><b><font size="4" color="#FFFFFF">VenturaHR (cabeçalho)</font></b></td>
+          <td style="width: 100%; background-color:#808080;"><span style="font-weight: bold; font-size: large; color: #FFFFFF">VenturaHR (cabeçalho)</span></td>
         </tr>
         <tr>
-          <td width="100%">
-            <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber2">
+          <td style="width: 100%;">
+            <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; border-color: #111111; width: 100%;" id="AutoNumber2">
               <tr>
-                <td width="500" valign="top">
-                  <p align="center"><font size="2"><b>10 Últimas Vagas Publicadas</b></font></p>
-                  <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber3">
+                <td style="width: 500px;" valign="top">
+                  <p align="center"><span style="font-size: small;"><b>10 Últimas Vagas Publicadas</b></span></p>
+                  <table border="1" cellpadding="0" cellspacing="0" style="border-collapse: collapse; border-color: #111111; width: 100%;" id="AutoNumber3">
                     <tr>
-                      <th style="width: 27%;"><font size="2">Cargo</font></th>
-                      <th style="width: 52%;"><font size="2">Descrição</font></th>
-                      <th style="width: 21%;"><font size="2">Cidade</font></th>
+                      <th style="width: 27%;"><span style="font-size: small;">Cargo</span></th>
+                      <th style="width: 52%;"><span style="font-size: small;">Descrição</span></th>
+                      <th style="width: 21%;"><span style="font-size: small;">Cidade</span></th>
                       <th style="width: 21%;">&nbsp;</th>
                     </tr>
                     <tr v-for="vacancy in mockVacancies" :key="vacancy.id">
                       <td><span style="font-size: small;">{{ vacancy.position }}</span></td>
                       <td>{{ vacancy.description }}</td>
                       <td><span style="font-size: small;">{{ vacancy.city }}</span></td>
-                      <td><span style="font-size: small;"><a href="a"><span class="material-icons">remove_red_eye</span></a></span></td>
+                      <td><a href="a"><span class="material-icons">remove_red_eye</span></a></td>
                     </tr>
                   </table>
                 </td>
                 <td valign="top">
-                  <p align="center"><b><font size="2">Acesso ao Sistema</font></b></p>
+                  <p align="center"><b><span style="font-size: small;">Acesso ao Sistema</span></b></p>
                   <div align="center">
                     <center>
-                      <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber4">
+                      <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; border-color: #111111;" id="AutoNumber4">
                         <tr>
-                          <td><b><font size="2">Email</font></b></td>
+                          <td><b><span style="font-size: small;">Email</span></b></td>
                           <td><input type="text" name="email" size="30"></td>
                         </tr>
                         <tr>
-                          <td><b><font size="2">Senha</font></b></td>
+                          <td><b><span style="font-size: small;">Senha</span></b></td>
                           <td><input type="password" name="senha" size="30"></td>
                         </tr>
                         <tr>
@@ -48,27 +48,27 @@
                     </center>
                   </div>
                   &nbsp;
-                  <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="100%" id="AutoNumber5">
+                  <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; border-color: #111111; width: 100%;" id="AutoNumber5">
                     <tr>
                       <td>
-                        <b><font size="2">Não tem conta no site?</font></b>
+                        <b><span style="font-size: small;">Não tem conta no site?</span></b>
                         <p align="center">
-                          <font size="2"><a href="09_02_Cadastrar_Usuario.html">Criar Uma Nova Conta</a></font>
+                          <span style="font-size: small;"><a href="09_02_Cadastrar_Usuario.html">Criar Uma Nova Conta</a></span>
                         </p>
                       </td>
                     </tr>
                     <tr>
                       <td>
-                        <p style="margin-top: 0; margin-bottom: 0"><b><font size="2">Benefícios de se cadastrar como membro:</font></b></p>
-                        <p style="margin-top: 0; margin-bottom: 0"><font size="2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</font></p>
+                        <p style="margin-top: 0; margin-bottom: 0"><b><span style="font-size: small;">Benefícios de se cadastrar como membro:</span></b></p>
+                        <p style="margin-top: 0; margin-bottom: 0"><span style="font-size: small;">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</span></p>
                         <p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
                         <p style="margin-top: 0; margin-bottom: 0">
-                          <font size="2">
+                          <span style="font-size: small;">
                             Phasellus adipiscing feugiat magna. Nam pretium nisi. Aenean felis leo, sagittis ac, aliquam sed, mattis eu, ligula.
-                          </font>
+                          </span>
                         </p>
                         <p style="margin-top: 0; margin-bottom: 0">&nbsp;</p>
-                        <p style="margin-top: 0; margin-bottom: 0"><font size="2">Ut pede tortor, sodales a, hendrerit eget, pellentesque in, leo.</font></p>
+                        <p style="margin-top: 0; margin-bottom: 0"><span style="font-size: small;">Ut pede tortor, sodales a, hendrerit eget, pellentesque in, leo.</span></p>
                       </td>
                     </tr>
                   </table>
@@ -78,7 +78,7 @@
           </td>
         </tr>
         <tr>
-          <td width="100%" bgcolor="#808080"><b><font size="4" color="#FFFFFF">(rodape)</font></b></td>
+          <td style="width: 100%; background-color:#808080;"><span style="font-weight: bold; font-size: large; color: #FFFFFF">(rodape)</span></td>
         </tr>
       </table>
     </center>
