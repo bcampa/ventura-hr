@@ -2,45 +2,29 @@
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
   <div align="center">
-    <center>
-      <table 
-        border="0"
-        cellpadding="10"
-        cellspacing="0"
-        style="border-collapse: collapse; border-color: #111111; width: 780px; background-color: #FFFFFF;"
-        id="AutoNumber1"
-      >
-        <tr>
-          <td style="width: 100%; background-color:#808080;">
-            <span style="font-weight: bold; font-size: large; color: #FFFFFF">
-              VenturaHR (cabeçalho)
-            </span>
-          </td>
-        </tr>
-        <tr>
-          <td style="width: 100%;">
-            <table
-              border="1"
-              cellpadding="5"
-              cellspacing="0"
-              style="border-collapse: collapse; border-color: #111111; width: 100%;"
-              id="AutoNumber2"
-            >
-              <router-view />
-            </table>
-          </td>
-        </tr>
-        <tr>
-          <td
-            style="width: 100%; background-color:#808080;"
-          >
-            <span style="font-weight: bold; font-size: large; color: #FFFFFF">
-              (rodape)
-            </span>
-          </td>
-        </tr>
-      </table>
-    </center>
+    <div 
+      style="border-collapse: collapse; border-color: #111111; width: 780px; background-color: #FFFFFF;"
+      id="AutoNumber1"
+    >
+      <header style="width: 100%; background-color:#808080; color: #FFFFFF; text-align: left;">
+        <h2 style="font-weight: bold; font-size: large; padding: 10px; margin: 0;">
+          VenturaHR (cabeçalho)
+        </h2>
+      </header>
+      <main style="width: 100%; padding: 10px; box-sizing: border-box;">
+        <div
+          style="border: 1px solid #111; border-collapse: collapse; width: 100%; padding: 5px; box-sizing: border-box;"
+          id="AutoNumber2"
+        >
+          <router-view />
+        </div>
+      </main>
+      <footer style="width: 100%; background-color:#808080; color: #FFFFFF; text-align: left;">
+        <h2 style="font-weight: bold; font-size: large; padding: 10px; margin: 0;">
+          (rodape)
+        </h2>
+      </footer>
+    </div>
   </div>
 
 </template>
