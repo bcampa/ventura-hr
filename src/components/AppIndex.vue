@@ -70,22 +70,20 @@
 <script>
 export default {
   name: 'AppIndex',
-  data() {
-    return {
-      mockVacancies: [
-        { id: 1, position: "Analista JEE", description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.", city: "Rio de Janeiro" },
-        { id: 2, position: "Programador Java", description: "Phasellus adipiscing feugiat magna.", city: "São Paulo" },
-        { id: 3, position: "Gerente de Projetos", description: "Nam pretium nisi.", city: "Vitória" },
-        { id: 4, position: "Suporte de Rede Wireless", description: "Aenean felis leo, sagittis ac, aliquam sed, matti seu, ligula.", city: "Brasília" },
-        { id: 5, position: "Arquiteto JEE", description: "Ut pede tortor, sodales a, hendrerit eget, pellentesque in, leo.", city: "Salvador" },
-        { id: 6, position: "Analista C#", description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.", city: "Rio de Janeiro" },
-        { id: 7, position: "Programador Java", description: "Phasellus adipiscing feugiat magna.", city: "São Paulo" },
-        { id: 8, position: "Gerente de Projetos", description: "	Nam pretium nisi.", city: "Vitória" },
-        { id: 9, position: "Suporte de Rede Wireless", description: "Aenean felis leo, sagittis ac, aliquam sed, mattis eu, ligula.", city: "Brasília" },
-        { id: 10, position: "Arquiteto C#", description: "	Ut pede tortor, sodales a, hendrerit eget, pellentesque in, leo.", city: "Salvador" }
-      ]
-    }
-  }
+  data: () => ({
+    mockVacancies: [
+      { id: 1, position: "Analista JEE", description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.", city: "Rio de Janeiro" },
+      { id: 2, position: "Programador Java", description: "Phasellus adipiscing feugiat magna.", city: "São Paulo" },
+      { id: 3, position: "Gerente de Projetos", description: "Nam pretium nisi.", city: "Vitória" },
+      { id: 4, position: "Suporte de Rede Wireless", description: "Aenean felis leo, sagittis ac, aliquam sed, matti seu, ligula.", city: "Brasília" },
+      { id: 5, position: "Arquiteto JEE", description: "Ut pede tortor, sodales a, hendrerit eget, pellentesque in, leo.", city: "Salvador" },
+      { id: 6, position: "Analista C#", description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.", city: "Rio de Janeiro" },
+      { id: 7, position: "Programador Java", description: "Phasellus adipiscing feugiat magna.", city: "São Paulo" },
+      { id: 8, position: "Gerente de Projetos", description: "	Nam pretium nisi.", city: "Vitória" },
+      { id: 9, position: "Suporte de Rede Wireless", description: "Aenean felis leo, sagittis ac, aliquam sed, mattis eu, ligula.", city: "Brasília" },
+      { id: 10, position: "Arquiteto C#", description: "	Ut pede tortor, sodales a, hendrerit eget, pellentesque in, leo.", city: "Salvador" }
+    ]
+  })
 }
 </script>
 
