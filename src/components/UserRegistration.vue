@@ -91,7 +91,7 @@
                   <input
                     type="button"
                     value="Criar Conta"
-                    @click="submit()"
+                    @click="onSubmit()"
                   />
                 </p>
               </td>
@@ -121,10 +121,7 @@ export default {
     }
   }),
   methods: {
-    log() {
-      console.log(this.form.name);
-    },
-    submit() {
+    onSubmit: async function() {
       const headers = new Headers();
       headers.append('Content-Type', 'application/json');
       const request = new Request("http://localhost:5000/user/sign-up", {
@@ -132,13 +129,14 @@ export default {
         headers: headers,
         body: JSON.stringify(this.form)
       });
-      fetch(request)
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((exception) => {
-          console.log(exception);
-        });
+      const response = await fetch(request);
+      if (response.ok) {
+        alert("Cadastro realizado com sucesso.");
+        this.$router.push({ name: 'index'});
+      }
+      else {
+        alert("Algum erro ocorreu durante o cadastro.");
+      }
     }
   },
   created() {
