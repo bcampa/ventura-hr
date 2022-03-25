@@ -24,15 +24,15 @@
           <table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; border-color: #111111;" id="AutoNumber4">
             <tr>
               <td><b><span style="font-size: small;">Email</span></b></td>
-              <td><input type="text" name="email" size="30"></td>
+              <td><input type="text" name="email" size="30" v-model="loginForm.email"></td>
             </tr>
             <tr>
               <td><b><span style="font-size: small;">Senha</span></b></td>
-              <td><input type="password" name="senha" size="30"></td>
+              <td><input type="password" name="senha" size="30" v-model="loginForm.password"></td>
             </tr>
             <tr>
               <td colspan="2">
-                <p align="center"><input type="button" value="Entrar" onclick="location.href='./09_03_Tela_de_Ofertas.html'"></p>
+                <p align="center"><input type="button" value="Entrar" @click="onSubmitLogin"></p>
               </td>
             </tr>
           </table>
@@ -68,9 +68,15 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
   name: 'AppIndex',
   data: () => ({
+    loginForm: {
+      email: null,
+      password: null
+    },
     mockVacancies: [
       { id: 1, position: "Analista JEE", description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.", city: "Rio de Janeiro" },
       { id: 2, position: "Programador Java", description: "Phasellus adipiscing feugiat magna.", city: "São Paulo" },
@@ -83,7 +89,19 @@ export default {
       { id: 9, position: "Suporte de Rede Wireless", description: "Aenean felis leo, sagittis ac, aliquam sed, mattis eu, ligula.", city: "Brasília" },
       { id: 10, position: "Arquiteto C#", description: "	Ut pede tortor, sodales a, hendrerit eget, pellentesque in, leo.", city: "Salvador" }
     ]
-  })
+  }),
+  computed: {
+    ...mapGetters(["loggedUser"])
+  },
+  methods: {
+    ...mapActions(["login"]),
+    onSubmitLogin: async function() {
+      await this.login(this.loginForm);
+      if (this.loggedUser != null) {
+        alert(`Bem-vindo(a) ${this.loggedUser.name}`);
+      }
+    }
+  }
 }
 </script>
 
