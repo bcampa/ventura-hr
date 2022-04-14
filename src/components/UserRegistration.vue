@@ -124,7 +124,7 @@ export default {
     onSubmit: async function() {
       const headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      const request = new Request("http://localhost:5000/user/sign-up", {
+      const request = new Request("http://localhost:5000/user", {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(this.form)

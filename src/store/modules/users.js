@@ -13,7 +13,7 @@ const actions = {
   async login({ commit }, user) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    const request = new Request("http://localhost:5000/user/sign-in", {
+    const request = new Request("http://localhost:5000/authentication", {
         method: 'POST',
         headers: headers,
         body: JSON.stringify(user)
