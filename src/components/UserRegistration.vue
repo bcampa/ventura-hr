@@ -1,103 +1,121 @@
 <template>
   <tr>
     <td valign="top">
-      <p align="center">
-        <font size="2"><b>Criação de Conta - Cadastramento de Usuário</b></font>
-      </p>
-      <div align="center">
-        <center>
-          <table
-            border="1"
-            cellpadding="5"
-            cellspacing="0"
-            style="border-collapse: collapse"
-            bordercolor="#111111"
-            id="AutoNumber3"
-          >
-            <tr>
-              <td align="left"><font size="2">Nome:</font></td>
-              <td><input type="text" name="nome" size="50" v-model="form.name"/></td>
-            </tr>
-            <tr>
-              <td align="left"><font size="2">Endereço:</font></td>
-              <td>
-                <input type="text" name="endereco" size="50" v-model="form.address"/>
-              </td>
-            </tr>
-            <tr>
-              <td align="left"><font size="2">Telefone:</font></td>
-              <td>
-                <input type="text" name="telefone" size="30" v-model="form.phone"/>
-              </td>
-            </tr>
-            <tr>
-              <td align="left"><font size="2">Email:</font></td>
-              <td><input type="text" name="email" size="30" v-model="form.email"/></td>
-            </tr>
-            <tr>
-              <td align="left"><font size="2">Senha:</font></td>
-              <td>
-                <input type="password" name="senha1" size="20" v-model="form.password"/>
-              </td>
-            </tr>
-            <tr>
-              <td align="left">
-                <font size="2">Confirma Senha:</font>
-              </td>
-              <td>
-                <input type="password" name="senha2" size="20" v-model="form.confirmPassword"/>
-              </td>
-            </tr>
-            <tr>
-              <td align="left">
-                <font size="2">Tipo de Conta:</font>
-              </td>
-              <td>
-                <input
-                  type="radio"
-                  name="tipoConta"
-                  :value=accountTypes.candidate
-                  v-model="form.accountType"
-                />
-                Candidato
-                <input
-                  type="radio"
-                  name="tipoConta"
-                  :value=accountTypes.corporation
-                  v-model="form.accountType"
-                />
-                Empresa
-              </td>
-            </tr>
-            <tr>
-              <td align="left"><font size="2">CPF:</font></td>
-              <td><input type="text" name="cnpj" size="20" :disabled="form.accountType !== accountTypes.candidate" v-model="form.cpf"/></td>
-            </tr>
-            <tr>
-              <td align="left">
-                <font size="2">Razão Social:</font>
-              </td>
-              <td>
-                <input type="text" name="razaoSocial" size="30" :disabled="form.accountType !== accountTypes.corporation" v-model="form.corporateName"/>
-              </td>
-            </tr>
-            <tr>
-              <td align="left"><font size="2">CNPJ:</font></td>
-              <td><input type="text" name="cnpj" size="20" :disabled="form.accountType !== accountTypes.corporation" v-model="form.cnpj"/></td>
-            </tr>
-            <tr>
-              <td colspan="2">
-                <p align="center">
-                  <input
-                    type="button"
-                    value="Criar Conta"
-                    @click="onSubmit()"
-                  />
-                </p>
-              </td>
-            </tr>
-          </table>
-        </center>
+
+      <p align="center"><font size="2"><b>Criação de Conta - Cadastramento de Usuário</b></font></p>
+      <div class="center-horizontally">
+        <form
+          id="AutoNumber3"
+          @submit="onSubmit"
+        >
+          
+          <div class="form-item label-container">
+            <label>Nome:</label>
+          </div>
+          <div class="form-item">
+            <input type="text" name="nome" size="50" v-model="form.name" />
+          </div>
+          
+          <div class="form-item label-container">
+            <label>Endereço:</label>
+          </div>
+          <div class="form-item">
+            <input type="text" name="endereco" size="50" v-model="form.address" />
+          </div>
+          
+          <div class="form-item label-container">
+            <label>Telefone:</label>
+          </div>
+          <div class="form-item">
+            <input type="text" name="telefone" size="30" v-model="form.phone" />
+          </div>
+          
+          <div class="form-item label-container">
+            <label>Email:</label>
+          </div>
+          <div class="form-item">
+            <input type="text" name="email" size="30" v-model="form.email" />
+          </div>
+          
+          <div class="form-item label-container">
+            <label>Senha:</label>
+          </div>
+          <div class="form-item">
+            <input type="password" name="senha1" size="20" v-model="form.password" />
+          </div>
+          
+          <div class="form-item label-container">
+            <label>Confirma Senha:</label>
+          </div>
+          <div class="form-item">
+            <input type="password" name="senha2" size="20" v-model="form.confirmPassword" />
+          </div>
+          
+          <div class="form-item label-container">
+            <label>Tipo de Conta:</label>
+          </div>
+          <div class="form-item">
+            <input
+              type="radio"
+              name="tipoConta"
+              :value=accountTypes.candidate
+              v-model="form.accountType"
+            />
+            Candidato
+            <input
+              type="radio"
+              name="tipoConta"
+              :value=accountTypes.corporation
+              v-model="form.accountType"
+            />
+            Empresa
+          </div>
+          
+          <div class="form-item label-container">
+            <label>CPF:</label>
+          </div>
+          <div class="form-item">
+            <input
+              type="text"
+              name="cpf"
+              size="20"
+              :disabled="form.accountType !== accountTypes.candidate"
+              v-model="form.cpf"
+            >
+          </div>
+          
+          <div class="form-item label-container">
+            <label>Razão Social:</label>
+          </div>
+          <div class="form-item">
+            <input
+              type="text"
+              name="razaoSocial"
+              size="30" 
+              :disabled="form.accountType !== accountTypes.corporation"
+              v-model="form.corporateName"
+            />
+          </div>
+          
+          
+          <div class="form-item label-container">
+            <label>CNPJ:</label>
+          </div>
+          <div class="form-item">
+            <input
+              type="text"
+              name="cnpj"
+              size="20"
+              :disabled="form.accountType !== accountTypes.corporation"
+              v-model="form.cnpj"
+            />
+          </div>
+          
+          <div class="form-item form-send-button-container">
+            <button type="submit">Criar Conta</button>
+          </div>
+          
+        </form>
       </div>
     </td>
   </tr>
@@ -121,7 +139,8 @@ export default {
     }
   }),
   methods: {
-    onSubmit: async function() {
+    onSubmit: async function(event) {
+      event.preventDefault();
       const headers = new Headers();
       headers.append('Content-Type', 'application/json');
       const request = new Request("http://localhost:5000/user", {
@@ -149,4 +168,38 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+#AutoNumber3 {
+  display: grid;
+  background-color: #111;
+  border: 1px solid #111;
+  grid-template-columns: repeat(2, max-content);
+  gap: 1px;
+  text-align: left;
+}
+
+#AutoNumber3 > * {
+  background-color: #FFF;
+}
+
+.form-item {
+  padding: 5px;
+}
+
+.label-container {
+  display: flex;
+  align-items: center;
+  font-size: small;
+}
+
+.center-horizontally {
+  display: flex;
+  justify-content: center;
+}
+
+.form-send-button-container {
+  grid-column: 1 / span 2;
+  display: flex;
+  justify-content: center;
+}
+</style>
