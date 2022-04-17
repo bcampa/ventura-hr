@@ -71,7 +71,7 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  name: 'AppIndex',
+  name: 'LoginPage',
   data: () => ({
     loginForm: {
       email: null,
@@ -98,8 +98,9 @@ export default {
     onSubmitLogin: async function() {
       await this.login(this.loginForm);
       if (this.loggedUser != null) {
-        alert(`Bem-vindo(a) ${this.loggedUser.name}`);
+        alert(`Bem-vindo(a) ${this.loggedUser}`);
       }
+        this.$router.push({ name: 'offers'});
     }
   }
 }

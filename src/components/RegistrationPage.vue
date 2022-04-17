@@ -123,7 +123,7 @@
 
 <script>
 export default {
-  name: 'UserRegistration',
+  name: 'RegistrationPage',
   data: () => ({
     form: {
       name: null,
@@ -168,7 +168,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 #AutoNumber3 {
   display: grid;
   background-color: #111;

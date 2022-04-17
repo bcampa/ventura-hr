@@ -1,6 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
-import AppIndex from "./components/AppIndex.vue";
-import UserRegistration from "./components/UserRegistration.vue";
+import LoginPage from "./components/LoginPage.vue";
+import RegistrationPage from "./components/RegistrationPage.vue";
+import OffersPage from "./components/OffersPage.vue";
 
 export default createRouter({
   history: createWebHistory(),
@@ -8,7 +9,7 @@ export default createRouter({
     {
       path: "/",
       name: "index",
-      component: AppIndex,
+      component: LoginPage,
       meta: {
         title: 'VenturaHR',
       }
@@ -16,9 +17,18 @@ export default createRouter({
     {
       path: "/sign-up",
       name: "signup",
-      component: UserRegistration,
+      component: RegistrationPage,
       meta: {
         title: 'Cadastrar Usuário | VenturaHR',
+      }
+    },
+    {
+      path: "/offers",
+      name: "offers",
+      component: OffersPage,
+      meta: {
+        title: 'Ofertas | VenturaHR',
+        requiresAuth: true,
       }
     }
   ]
