@@ -122,6 +122,8 @@
 </template>
 
 <script>
+import requests from '../requests'
+
 export default {
   name: 'RegistrationPage',
   data: () => ({
@@ -141,14 +143,7 @@ export default {
   methods: {
     onSubmit: async function(event) {
       event.preventDefault();
-      const headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      const request = new Request("http://localhost:5000/user", {
-        method: 'POST',
-        headers: headers,
-        body: JSON.stringify(this.form)
-      });
-      const response = await fetch(request);
+      const response = await requests.authentication.post(this.form);
       if (response.ok) {
         alert("Cadastro realizado com sucesso.");
         this.$router.push({ name: 'index'});

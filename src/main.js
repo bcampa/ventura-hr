@@ -2,6 +2,7 @@ import { createApp, nextTick } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import requests from './requests'
 
 createApp(App).use(store).use(router).mount('#app')
 
@@ -27,7 +28,7 @@ async function redirectIfCannotAccess(destination) {
     return loginPage;
   }
 
-  const response = await fetchLoggedUser(token);
+  const response = await requests.user.getLoggedUser();
   if (response.ok) {
     // store.commit()
     return true;
@@ -40,15 +41,4 @@ async function redirectIfCannotAccess(destination) {
     console.log("Ocorreu um erro ao obter o usuário");
     return false;
   }
-}
-
-function fetchLoggedUser(token) {
-  const headers = new Headers();
-  headers.append('Authorization', token);
-  const request = new Request("http://localhost:5000/users/me", {
-      method: 'GET',
-      headers: headers
-    }
-  );
-  return fetch(request);
 }

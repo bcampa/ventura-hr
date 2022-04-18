@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import requests from '../requests'
 
 export default {
   name: 'LoginPage',
@@ -90,17 +90,20 @@ export default {
       { id: 10, position: "Arquiteto C#", description: "	Ut pede tortor, sodales a, hendrerit eget, pellentesque in, leo.", city: "Salvador" }
     ]
   }),
-  computed: {
-    ...mapGetters(["loggedUser"])
-  },
   methods: {
-    ...mapActions(["login"]),
     onSubmitLogin: async function() {
-      await this.login(this.loginForm);
-      if (this.loggedUser != null) {
-        alert(`Bem-vindo(a) ${this.loggedUser}`);
-      }
+      const response = await requests.authentication.post(this.loginForm);
+      if (response.ok) {
+        const responseBody = await response.json();
+        localStorage.setItem("bearerToken", responseBody.token);
         this.$router.push({ name: 'offers'});
+      }
+      else if (response.status === 404) {
+        alert('Usuário e/ou senha incorretos');
+      }
+      else {
+        alert('Ocorreu um erro ao tentar realizar login, tente novamente mais tarde');
+      }
     }
   }
 }
