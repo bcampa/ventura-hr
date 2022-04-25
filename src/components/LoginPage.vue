@@ -9,11 +9,11 @@
           <th style="width: 21%;"><span style="font-size: small;">Cidade</span></th>
           <th style="width: 21%;">&nbsp;</th>
         </tr>
-        <tr v-for="vacancy in mockVacancies" :key="vacancy.id">
-          <td><span style="font-size: small;">{{ vacancy.position }}</span></td>
-          <td>{{ vacancy.description }}</td>
-          <td><span style="font-size: small;">{{ vacancy.city }}</span></td>
-          <td><a href="a"><span class="material-icons">remove_red_eye</span></a></td>
+        <tr v-for="jobOffer in jobOffers" :key="jobOffer.id">
+          <td><span style="font-size: small;">{{ jobOffer.nomeDoCargo }}</span></td>
+          <td>{{ jobOffer.descricao }}</td>
+          <td><span style="font-size: small;">{{ jobOffer.cidade }}</span></td>
+          <td><router-link :to="'/job-offer/' + jobOffer.id"><span class="material-icons">remove_red_eye</span></router-link></td>
         </tr>
       </table>
     </td>
@@ -77,18 +77,7 @@ export default {
       email: null,
       password: null
     },
-    mockVacancies: [
-      { id: 1, position: "Analista JEE", description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.", city: "Rio de Janeiro" },
-      { id: 2, position: "Programador Java", description: "Phasellus adipiscing feugiat magna.", city: "São Paulo" },
-      { id: 3, position: "Gerente de Projetos", description: "Nam pretium nisi.", city: "Vitória" },
-      { id: 4, position: "Suporte de Rede Wireless", description: "Aenean felis leo, sagittis ac, aliquam sed, matti seu, ligula.", city: "Brasília" },
-      { id: 5, position: "Arquiteto JEE", description: "Ut pede tortor, sodales a, hendrerit eget, pellentesque in, leo.", city: "Salvador" },
-      { id: 6, position: "Analista C#", description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.", city: "Rio de Janeiro" },
-      { id: 7, position: "Programador Java", description: "Phasellus adipiscing feugiat magna.", city: "São Paulo" },
-      { id: 8, position: "Gerente de Projetos", description: "	Nam pretium nisi.", city: "Vitória" },
-      { id: 9, position: "Suporte de Rede Wireless", description: "Aenean felis leo, sagittis ac, aliquam sed, mattis eu, ligula.", city: "Brasília" },
-      { id: 10, position: "Arquiteto C#", description: "	Ut pede tortor, sodales a, hendrerit eget, pellentesque in, leo.", city: "Salvador" }
-    ]
+    jobOffers: Array(10)
   }),
   methods: {
     onSubmitLogin: async function() {
@@ -104,7 +93,21 @@ export default {
       else {
         alert('Ocorreu um erro ao tentar realizar login, tente novamente mais tarde');
       }
+    },
+    getJobOfferData: async function() {
+      const filter = { page: 0, itemsPerPage: 10, paginated: true };
+      const response = await requests.jobOffers.get(filter);
+      if (response.ok) {
+        const responseBody = await response.json();
+        return responseBody.items;
+      }
+      else {
+        alert('Ocorreu um erro ao tentar carregar as vagas');
+      }
     }
+  },
+  created: async function() {
+    this.jobOffers = await this.getJobOfferData();
   }
 }
 </script>

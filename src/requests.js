@@ -6,7 +6,10 @@ function getDefaultHeaders() {
   return headers;
 }
 
-function get(endpoint) {
+function get(endpoint, query) {
+  if (query != null) {
+    endpoint += '?' + new URLSearchParams(query);
+  }
   const request = new Request(
     endpoint,
     {
@@ -41,6 +44,11 @@ const requests = {
     getById: function(id) { return get(this.endpoint + id) },
     post: function(data) { return post(this.endpoint, data) },
     getLoggedUser: function() { return get(this.endpoint + 'me') },
+  },
+  jobOffers: {
+    endpoint: hostname + 'job-offers/',
+    get: function(query) { return get(this.endpoint, query) },
+    getById: function(id) { return get(this.endpoint + id) },
   }
 }
 
