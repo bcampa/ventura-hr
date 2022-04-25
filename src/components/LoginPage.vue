@@ -77,7 +77,7 @@ export default {
       email: null,
       password: null
     },
-    jobOffers: Array(10)
+    jobOffers: []
   }),
   methods: {
     onSubmitLogin: async function() {
@@ -95,7 +95,7 @@ export default {
       }
     },
     getJobOfferData: async function() {
-      const filter = { page: 0, itemsPerPage: 10, paginated: true };
+      const filter = { page: 0, itemsPerPage: 10, paginated: true, sortingProperty: "Id", sortingDirection: "DESC" };
       const response = await requests.jobOffers.get(filter);
       if (response.ok) {
         const responseBody = await response.json();
