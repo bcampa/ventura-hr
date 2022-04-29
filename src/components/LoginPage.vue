@@ -95,8 +95,7 @@ export default {
       }
     },
     getJobOfferData: async function() {
-      const filter = { page: 0, itemsPerPage: 10, paginated: true, sortingProperty: "Id", sortingDirection: "DESC" };
-      const response = await requests.jobOffers.get(filter);
+      const response = await requests.jobOffers.get(this.filter);
       if (response.ok) {
         const responseBody = await response.json();
         return responseBody.items;
@@ -107,6 +106,13 @@ export default {
     }
   },
   created: async function() {
+    this.filter = {
+      page: 0,
+      itemsPerPage: 10,
+      paginated: true,
+      sortingProperty: "Id",
+      sortingDirection: "DESC"
+    };
     this.jobOffers = await this.getJobOfferData();
   }
 }

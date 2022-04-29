@@ -30,11 +30,13 @@ async function redirectIfCannotAccess(destination) {
 
   const response = await requests.user.getLoggedUser();
   if (response.ok) {
-    // store.commit()
+    const responseBody = await response.json();
+    store.commit("setCurrentUser", responseBody);
     return true;
   }
   else if (response.status === 401) {
     localStorage.removeItem("bearerToken");
+    store.commit("setCurrentUser", null);
     return loginPage;
   }
   else {

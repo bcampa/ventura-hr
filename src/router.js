@@ -1,7 +1,7 @@
 import { createWebHistory, createRouter } from "vue-router";
 import LoginPage from "./components/LoginPage.vue";
 import RegistrationPage from "./components/RegistrationPage.vue";
-import OffersPage from "./components/OffersPage.vue";
+import OffersPage from "./components/offersPage/OffersPage.vue";
 
 export default createRouter({
   history: createWebHistory(),

@@ -58,14 +58,14 @@
             <input
               type="radio"
               name="tipoConta"
-              :value=accountTypes.candidate
+              :value=userTypes.applicant
               v-model="form.accountType"
             />
             Candidato
             <input
               type="radio"
               name="tipoConta"
-              :value=accountTypes.corporation
+              :value=userTypes.corporation
               v-model="form.accountType"
             />
             Empresa
@@ -79,7 +79,7 @@
               type="text"
               name="cpf"
               size="20"
-              :disabled="form.accountType !== accountTypes.candidate"
+              :disabled="form.accountType !== userTypes.applicant"
               v-model="form.cpf"
             >
           </div>
@@ -92,7 +92,7 @@
               type="text"
               name="razaoSocial"
               size="30" 
-              :disabled="form.accountType !== accountTypes.corporation"
+              :disabled="form.accountType !== userTypes.corporation"
               v-model="form.corporateName"
             />
           </div>
@@ -106,7 +106,7 @@
               type="text"
               name="cnpj"
               size="20"
-              :disabled="form.accountType !== accountTypes.corporation"
+              :disabled="form.accountType !== userTypes.corporation"
               v-model="form.cnpj"
             />
           </div>
@@ -123,6 +123,7 @@
 
 <script>
 import requests from '../requests'
+import userTypes from '../constants'
 
 export default {
   name: 'RegistrationPage',
@@ -154,11 +155,7 @@ export default {
     }
   },
   created() {
-    // pseudo enum
-    this.accountTypes = {
-      corporation: 2,
-      candidate: 3
-    }
+    this.userTypes = userTypes;
   }
 }
 </script>
