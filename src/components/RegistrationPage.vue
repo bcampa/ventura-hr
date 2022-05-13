@@ -123,7 +123,7 @@
 
 <script>
 import requests from '../requests'
-import userTypes from '../constants'
+import { userTypes } from '../constants'
 
 export default {
   name: 'RegistrationPage',

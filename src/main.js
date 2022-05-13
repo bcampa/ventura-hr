@@ -32,6 +32,9 @@ async function redirectIfCannotAccess(destination) {
   if (response.ok) {
     const responseBody = await response.json();
     store.commit("setCurrentUser", responseBody);
+    if (destination.meta.allowedUserTypes?.length > 0) {
+      return destination.meta.allowedUserTypes.includes(responseBody.type);
+    }
     return true;
   }
   else if (response.status === 401) {

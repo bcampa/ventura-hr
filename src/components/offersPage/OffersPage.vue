@@ -22,7 +22,7 @@
                 </a>
                 <span v-if="currentUser.type === userTypes.corporation">
                   |
-                  <a href="09_04_Alterar_Usuario.html">Publicar Uma Nova Vaga</a>
+                  <router-link :to="'/offers/create'">Publicar Uma Nova Vaga</router-link>
                 </span>
               </span>
             </p>
@@ -217,12 +217,4 @@
 <script src="./offersPage.js"></script>
 
 <style>
-  .center-horizontally {
-    display: flex;
-    justify-content: center;
-  }
-
-  .font-size-2 {
-    font-size: small;
-  }
 </style>

@@ -49,6 +49,15 @@ body {
   background-color: #cccccc;
 }
 
+.center-horizontally {
+  display: flex;
+  justify-content: center;
+}
+
+.font-size-2 {
+  font-size: small;
+}
+
 /* #app {
   height: 100vh;
   width: 100vw;
