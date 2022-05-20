@@ -10,9 +10,9 @@
           <th style="width: 21%;">&nbsp;</th>
         </tr>
         <tr v-for="jobOffer in jobOffers" :key="jobOffer.id">
-          <td><span style="font-size: small;">{{ jobOffer.nomeDoCargo }}</span></td>
-          <td>{{ jobOffer.descricao }}</td>
-          <td><span style="font-size: small;">{{ jobOffer.cidade }}</span></td>
+          <td><span style="font-size: small;">{{ jobOffer.position }}</span></td>
+          <td>{{ jobOffer.description }}</td>
+          <td><span style="font-size: small;">{{ jobOffer.city }}</span></td>
           <td><router-link :to="'/job-offer/' + jobOffer.id"><span class="material-icons">remove_red_eye</span></router-link></td>
         </tr>
       </table>

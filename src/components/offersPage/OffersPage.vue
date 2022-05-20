@@ -69,9 +69,9 @@
                 <th width="1">&nbsp;</th>
               </tr>
               <tr v-for="jobOffer in userOffersFilterResponse.items" :key="jobOffer.id">
-                <td width="200"><span class="font-size-2">{{ jobOffer.nomeDoCargo }}</span></td>
+                <td width="200"><span class="font-size-2">{{ jobOffer.position }}</span></td>
                 <td width="100" align="center">
-                  <span class="font-size-2">{{ formatDate(jobOffer.dataLimite) }}</span>
+                  <span class="font-size-2">{{ formatDate(jobOffer.deadline) }}</span>
                 </td>
                 <td width="1" align="center">
                   <span class="font-size-2">
@@ -186,13 +186,13 @@
                       </tr>
                       <tr v-for="jobOffer in searchFilterResponse.items" :key="jobOffer.id">
                         <td width="27%">
-                          <span class="font-size-2">{{ jobOffer.nomeDoCargo }}</span>
+                          <span class="font-size-2">{{ jobOffer.position }}</span>
                         </td>
                         <td width="52%">
-                          {{ jobOffer.descricao }}
+                          {{ jobOffer.description }}
                         </td>
                         <td width="21%">
-                          <span class="font-size-2">{{ jobOffer.cidade }}</span>
+                          <span class="font-size-2">{{ jobOffer.city }}</span>
                         </td>
                         <td width="21%">
                           <span class="font-size-2">
