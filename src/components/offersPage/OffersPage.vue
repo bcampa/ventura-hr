@@ -71,7 +71,7 @@
               <tr v-for="jobOffer in userOffersFilterResponse.items" :key="jobOffer.id">
                 <td width="200"><span class="font-size-2">{{ jobOffer.position }}</span></td>
                 <td width="100" align="center">
-                  <span class="font-size-2">{{ formatDate(jobOffer.deadline) }}</span>
+                  <span class="font-size-2">{{ $filters.dateBR(jobOffer.deadline) }}</span>
                 </td>
                 <td width="1" align="center">
                   <span class="font-size-2">

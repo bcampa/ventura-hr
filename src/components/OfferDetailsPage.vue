@@ -89,7 +89,7 @@
                 <span class="font-size-2">Data Limite:</span>
               </td>
               <td height="22">
-                {{ formatDate(jobOffer.deadline) }}
+                {{ $filters.dateBR(jobOffer.deadline) }}
               </td>
             </tr>
             <tr>
@@ -123,7 +123,7 @@
                     </th>
                   </tr>
                   <tr
-                    v-for="[index, criterion] in jobOffer.criteria.entries()"
+                    v-for="[index, criterion] in jobOffer.criteria?.entries()"
                     :key="index"
                   >
                     <td width="148">
@@ -156,180 +156,6 @@
         </button>
       </div>
     </td>
-    <td
-      valign="top"
-      v-if="currentPage === 2"
-    >
-      <p align="center">
-        <span class="font-size-2"><b>Publicar Vaga - Dados dos Critérios - Página 2 de 2</b></span>
-      </p>
-      <p align="center">
-        <span class="font-size-2"><b>Cargo:</b> {{ form.position }} | <b>Empresa:</b> Infnet | <b>Cidade: </b>{{ form.city }} - {{ form.state }}</span>
-      </p>
-      <table
-        border="1"
-        style="border-collapse: collapse"
-        bordercolor="#111111"
-        cellpadding="5"
-        cellspacing="0"
-      >
-        <tr>
-          <th width="148">
-            <span class="font-size-2">Nome</span>
-          </th>
-          <th width="380">
-            <span class="font-size-2">Descrição</span>
-          </th>
-          <th width="34">
-            <span class="font-size-2">Perfil</span>
-          </th>
-          <th width="34">
-            <span class="font-size-2">Peso</span>
-          </th>
-          <th width="53">&nbsp;</th>
-        </tr>
-        <tr>
-          <td>
-            <input
-              class="w-100"
-              type="text"
-              name="nome"
-              size="5"
-              required
-              v-model.trim="newCriterionForm.name"
-            >
-          </td>
-          <td>
-            <input
-              class="w-100"
-              type="text"
-              name="descricao"
-              size="5"
-              required
-              v-model.trim="newCriterionForm.description"
-            >
-          </td>
-          <td>
-            <select
-              name="perfil"
-              required
-              v-model="newCriterionForm.profile"
-            >
-              <option
-                v-for="[key, name] of profiles.entries()"
-                :key="key"
-                :value="key"
-              >
-                {{ name }}
-              </option>
-            </select>
-          </td>
-          <td>
-            <select
-              name="peso"
-              required
-              v-model="newCriterionForm.weight"
-            >
-              <option
-                v-for="option of weightOptions"
-                :key="option"
-                :value="option"
-              >{{ option }}</option>
-            </select>
-          </td>
-          <td align="center"><span
-              class="material-icons icon-button"
-              @click="addNewCriterion()"
-            >add_box</span></td>
-        </tr>
-      </table>
-      <br />
-      <table
-        border="1"
-        style="border-collapse: collapse"
-        bordercolor="#111111"
-        cellpadding="5"
-        cellspacing="0"
-      >
-        <tr
-          v-for="[index, criterion] in form.criteria.entries()"
-          :key="index"
-        >
-          <td width="148">
-            <span class="font-size-2">{{ criterion.name }}</span>
-          </td>
-          <td width="380">
-            <span class="font-size-2">{{ criterion.description }}</span>
-          </td>
-          <td
-            width="34"
-            align="center"
-          >
-            <span class="font-size-2">{{ profiles.get(criterion.profile) }}</span>
-          </td>
-          <td
-            width="34"
-            align="center"
-          >
-            <span class="font-size-2">{{ criterion.weight }}</span>
-          </td>
-          <td
-            align="center"
-            width="53"
-          >
-            <span class="material-icons icon-button">edit</span>
-          </td>
-          <td
-            align="center"
-            width="53"
-          >
-            <span
-              class="material-icons icon-button"
-              @click="removeCriterion(index)"
-            >
-              delete
-            </span>
-          </td>
-          <td
-            align="center"
-            width="53"
-          >
-            <span
-              class="material-icons icon-button"
-              @click="shiftCriterionUp(index)"
-            >
-              arrow_upward
-            </span>
-          </td>
-          <td
-            align="center"
-            width="54"
-          >
-            <span
-              class="material-icons icon-button"
-              @click="shiftCriterionDown(index)"
-            >
-              arrow_downward
-            </span>
-          </td>
-        </tr>
-        <tr>
-        </tr>
-        <tr>
-          <td
-            colspan="8"
-            align="center"
-          >
-            <button @click="submitCreation()">
-              Publicar Vaga
-            </button>
-            <button @click="returnToPreviousPage()">
-              Voltar
-            </button>
-          </td>
-        </tr>
-      </table>
-    </td>
   </tr>
 </template>
 
@@ -351,10 +177,6 @@ export default {
         alert("Ocorreu um erro ao tentar carregar dados da vaga");
       }
     },
-    // TODO: mover esse método para fora dos componentes
-    formatDate(date) {
-      return new Intl.DateTimeFormat('pt-BR', { month: '2-digit', day: '2-digit', year: 'numeric' }).format(new Date(date));
-    }
   },
   created: async function () {
     this.userTypes = userTypes;

@@ -3,8 +3,15 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import requests from './requests'
+import filters from './filters'
 
-createApp(App).use(store).use(router).mount('#app')
+const app = createApp(App)
+  .use(store)
+  .use(router);
+
+app.config.globalProperties.$filters = filters;
+
+app.mount('#app');
 
 const DEFAULT_TITLE = "VenturaHR";
 router.afterEach((to) => {
