@@ -58,6 +58,11 @@ body {
   font-size: small;
 }
 
+.w-100 {
+  width: 100%;
+  box-sizing: border-box;
+}
+
 /* #app {
   height: 100vh;
   width: 100vw;

@@ -75,7 +75,7 @@
                 </td>
                 <td width="1" align="center">
                   <span class="font-size-2">
-                    <router-link :to="'/job-offer/' + jobOffer.id">
+                    <router-link :to="'/offers/' + jobOffer.id">
                       <span class="material-icons">remove_red_eye</span>
                     </router-link>
                   </span>
@@ -117,19 +117,19 @@
                   <td>
                     <span class="font-size-2">cargo</span>
                   </td>
-                  <td><input type="text" name="pesquisa_1" size="60" v-model="searchFilter.position"/></td>
+                  <td><input type="text" name="pesquisa_1" size="60" class="w-100" v-model="searchFilter.position"/></td>
                 </tr>
                 <tr>
                   <td>
                     <span class="font-size-2">descrição</span>
                   </td>
-                  <td><input type="text" name="pesquisa_2" size="60" v-model="searchFilter.description"/></td>
+                  <td><input type="text" name="pesquisa_2" size="60" class="w-100" v-model="searchFilter.description"/></td>
                 </tr>
                 <tr>
                   <td>
                     <span class="font-size-2">cidade</span>
                   </td>
-                  <td><input type="text" name="pesquisa_3" size="60" v-model="searchFilter.city"/></td>
+                  <td><input type="text" name="pesquisa_3" size="60" class="w-100" v-model="searchFilter.city"/></td>
                 </tr>
                 <tr>
                   <td colspan="2">
@@ -196,7 +196,7 @@
                         </td>
                         <td width="21%">
                           <span class="font-size-2">
-                            <router-link :to="'/job-offer/' + jobOffer.id">
+                            <router-link :to="'/offers/' + jobOffer.id">
                               <span class="material-icons">remove_red_eye</span>
                             </router-link>
                           </span>

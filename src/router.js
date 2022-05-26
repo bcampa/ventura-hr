@@ -2,6 +2,7 @@ import { createWebHistory, createRouter } from "vue-router";
 import LoginPage from "./components/LoginPage.vue";
 import RegistrationPage from "./components/RegistrationPage.vue";
 import OffersPage from "./components/offersPage/OffersPage.vue";
+import OfferDetailsPage from "./components/OfferDetailsPage.vue";
 import JobOfferCreationPage from "./components/JobOfferCreationPage.vue";
 import { userTypes } from "./constants";
 
@@ -41,6 +42,15 @@ export default createRouter({
         title: 'Criar Oferta | VenturaHR',
         requiresAuth: true,
         allowedUserTypes: [ userTypes.corporation ]
+      }
+    },
+    {
+      path: "/offers/:id",
+      name: "offerDetails",
+      component: OfferDetailsPage,
+      meta: {
+        title: 'Dados da Vaga | VenturaHR',
+        requiresAuth: true
       }
     }
   ]
