@@ -144,7 +144,7 @@ export default {
   methods: {
     onSubmit: async function(event) {
       event.preventDefault();
-      const response = await requests.authentication.post(this.form);
+      const response = await requests.user.post(this.form);
       if (response.ok) {
         alert("Cadastro realizado com sucesso.");
         this.$router.push({ name: 'index'});
