@@ -50,6 +50,10 @@ const requests = {
     get: function(query) { return get(this.endpoint, query) },
     getById: function(id) { return get(this.endpoint + id) },
     post: function(data) { return post(this.endpoint, data) },
+  },
+  jobOfferResponses: {
+    endpoint: hostname + 'job-offer-responses/',
+    post: function(data) { return post(this.endpoint, data) },
   }
 }
 

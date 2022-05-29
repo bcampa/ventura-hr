@@ -151,6 +151,22 @@
           </table>
         </div>
         <br />
+        <button type="button" v-if="currentUser.type === userTypes.corporation">
+          Finalizar (não implementado)
+        </button>
+        &nbsp;
+        <button type="button" v-if="currentUser.type === userTypes.corporation">
+          Ver Respostas (não implementado)
+        </button>
+        &nbsp;
+        <button type="button" v-if="currentUser.type === userTypes.corporation && currentUser.companyId === jobOffer.corporationId">
+          Editar (não implementado)
+        </button>
+        &nbsp;
+        <button @click="this.$router.push({ name: 'applicationCreation', params: { id: $route.params.id } })">
+          Responder
+        </button>
+        &nbsp;
         <button @click="this.$router.push({ name: 'offers' })">
           Voltar
         </button>
@@ -176,6 +192,11 @@ export default {
       } else {
         alert("Ocorreu um erro ao tentar carregar dados da vaga");
       }
+    },
+  },
+  computed: {
+    currentUser() {
+      return this.$store.state.currentUser;
     },
   },
   created: async function () {

@@ -16,4 +16,11 @@ contractTypes.set(1, 'CLT');
 contractTypes.set(2, 'Pessoa Jurídica');
 contractTypes.set(3, 'Autônomo');
 
-export { userTypes, profiles, contractTypes };
+const criterionResponses = new Map();
+criterionResponses.set(1, 'Insuficiente');
+criterionResponses.set(2, 'Regular');
+criterionResponses.set(3, 'Bom');
+criterionResponses.set(4, 'Muito Bom');
+criterionResponses.set(5, 'Excelente');
+
+export { userTypes, profiles, contractTypes, criterionResponses };
