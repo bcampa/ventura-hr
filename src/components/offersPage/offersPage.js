@@ -89,11 +89,11 @@ export default {
   },
   created: async function() {
     this.userTypes = userTypes;
-    if (this.currentUser.tipo === userTypes.applicant) {
+    if (this.currentUser.type === userTypes.applicant) {
       this.userOffersFilter.applicantId = this.currentUser.id;
     }
-    else if (this.currentUser.tipo === userTypes.corporation) {
-      this.userOffersFilter.publisherId = this.currentUser.empresaId;
+    else if (this.currentUser.type === userTypes.corporation) {
+      this.userOffersFilter.publisherId = this.currentUser.companyId;
     }
     await this.executeSearchFilter();
     await this.executeUserOffersFilter();
