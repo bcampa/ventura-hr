@@ -37,7 +37,7 @@ function post(endpoint, data) {
 const requests = {
   authentication: {
     endpoint: hostname + 'authentication/',
-    post: function(data) { return post(this.endpoint, data) }
+    post: function(data) { return post(this.endpoint, data) },
   },
   user: {
     endpoint: hostname + 'users/',
@@ -50,6 +50,7 @@ const requests = {
     get: function(query) { return get(this.endpoint, query) },
     getById: function(id) { return get(this.endpoint + id) },
     post: function(data) { return post(this.endpoint, data) },
+    getResponsesById: function(id) { return get(this.endpoint + id + '/responses') },
   },
   jobOfferResponses: {
     endpoint: hostname + 'job-offer-responses/',

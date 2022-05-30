@@ -5,6 +5,7 @@ import OffersPage from "./components/offersPage/OffersPage.vue";
 import OfferDetailsPage from "./components/OfferDetailsPage.vue";
 import JobOfferCreationPage from "./components/JobOfferCreationPage.vue";
 import ApplicationCreationPage from "./components/ApplicationCreationPage.vue";
+import JobOfferResponsesPage from "./components/JobOfferResponsesPage.vue";
 import { userTypes } from "./constants";
 
 export default createRouter({
@@ -61,6 +62,16 @@ export default createRouter({
       meta: {
         title: 'Responder Vaga | VenturaHR',
         requiresAuth: true
+      }
+    },
+    {
+      path: "/offers/:id/responses",
+      name: "jobOfferResponses",
+      component: JobOfferResponsesPage,
+      meta: {
+        title: 'Respostas da Vaga | VenturaHR',
+        requiresAuth: true,
+        allowedUserTypes: [ userTypes.corporation ]
       }
     }
   ]

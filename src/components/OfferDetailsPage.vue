@@ -92,6 +92,17 @@
                 {{ $filters.dateBR(jobOffer.deadline) }}
               </td>
             </tr>
+            <tr v-if="currentUser.type === userTypes.corporation && currentUser.companyId === jobOffer.corporationId">
+              <td
+                align="left"
+                height="22"
+              >
+                <span class="font-size-2">Respostas:</span>
+              </td>
+              <td height="22">
+                {{ jobOffer.responseCount }}
+              </td>
+            </tr>
             <tr>
               <td
                 align="left"
@@ -151,22 +162,28 @@
           </table>
         </div>
         <br />
+        <button type="button"
+          v-if="currentUser.type === userTypes.corporation"
+          @click="this.$router.push({ name: 'jobOfferResponses', params: { id: $route.params.id } })"
+        >
+          Ver Respostas
+        </button>
         <button type="button" v-if="currentUser.type === userTypes.corporation">
           Finalizar (não implementado)
         </button>
-        &nbsp;
-        <button type="button" v-if="currentUser.type === userTypes.corporation">
-          Ver Respostas (não implementado)
-        </button>
-        &nbsp;
-        <button type="button" v-if="currentUser.type === userTypes.corporation && currentUser.companyId === jobOffer.corporationId">
+        <button
+          type="button"
+          v-if="currentUser.type === userTypes.corporation && currentUser.companyId === jobOffer.corporationId"
+          :disabled="jobOffer.responseCount > 0"
+        >
           Editar (não implementado)
         </button>
-        &nbsp;
-        <button @click="this.$router.push({ name: 'applicationCreation', params: { id: $route.params.id } })">
+        <button 
+          v-if="currentUser.type === userTypes.applicant"
+          @click="this.$router.push({ name: 'applicationCreation', params: { id: $route.params.id } })"
+        >
           Responder
         </button>
-        &nbsp;
         <button @click="this.$router.push({ name: 'offers' })">
           Voltar
         </button>
@@ -220,8 +237,8 @@ export default {
 </script>
 
 <style scoped>
-.icon-button {
-  cursor: pointer;
+button {
+  margin: 0 5px;
 }
 
 .w-100 {
