@@ -8,7 +8,7 @@
       </p>
       <p align="center">
         <!-- TODO Alterar informação empresa -->
-        <span class="font-size-2"><b>Cargo:</b> {{ jobOffer.position }} | <b>Empresa:</b> Infnet | <b>Cidade: </b>{{ jobOffer.city }} - {{ jobOffer.state }}</span>
+        <span class="font-size-2"><b>Cargo:</b> {{ jobOffer.position }} | <b>Empresa:</b> Infnet | <b>Cidade: </b>{{ jobOffer.city }} - {{ jobOffer.state }} | <b>Perfil:</b> {{ jobOffer.profile }}</span>
       </p>
       <table
         border="1"
