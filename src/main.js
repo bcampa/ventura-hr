@@ -25,6 +25,7 @@ router.beforeEach(async (to) => {
 
 async function redirectIfCannotAccess(destination) {
   const loginPage = { name: 'index' };
+  const offersPage = { name: 'offers' };
 
   if (!destination.meta.requiresAuth) {
     return true;
@@ -40,7 +41,10 @@ async function redirectIfCannotAccess(destination) {
     const responseBody = await response.json();
     store.commit("setCurrentUser", responseBody);
     if (destination.meta.allowedUserTypes?.length > 0) {
-      return destination.meta.allowedUserTypes.includes(responseBody.type);
+      const userAllowed = destination.meta.allowedUserTypes.includes(responseBody.type);
+      if (!userAllowed) {
+        return offersPage;
+      }
     }
     return true;
   }
