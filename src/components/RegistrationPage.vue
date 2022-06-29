@@ -14,8 +14,8 @@
           </div>
           <div class="form-item">
             <input type="text" name="nome" size="50" v-model="form.name" />
-            <p class="warning-message" v-if="valid.name === false">
-              O nome inserido não é válido.
+            <p class="warning-message" v-if="warnings.name != null">
+              {{ warnings.name }}
             </p>
           </div>
           
@@ -24,8 +24,8 @@
           </div>
           <div class="form-item">
             <input type="text" name="endereco" size="50" v-model="form.address" />
-            <p class="warning-message" v-if="valid.address === false">
-              O endereço inserido não é válido.
+            <p class="warning-message" v-if="warnings.address != null">
+              {{ warnings.address }}
             </p>
           </div>
           
@@ -34,8 +34,8 @@
           </div>
           <div class="form-item">
             <input type="text" name="telefone" size="30" v-model="form.phone" />
-            <p class="warning-message" v-if="valid.phone === false">
-              O número inserido não é válido.
+            <p class="warning-message" v-if="warnings.phone != null">
+              {{ warnings.phone }}
             </p>
           </div>
           
@@ -44,8 +44,8 @@
           </div>
           <div class="form-item">
             <input type="text" name="email" size="30" v-model="form.email" />
-            <p class="warning-message" v-if="valid.email === false">
-              O email inserido não é válido.
+            <p class="warning-message" v-if="warnings.email != null">
+              {{ warnings.email }}
             </p>
           </div>
           
@@ -54,8 +54,8 @@
           </div>
           <div class="form-item">
             <input type="password" name="senha1" size="20" v-model="form.password" />
-            <p class="warning-message" v-if="valid.password === false">
-              A senha inserida não é válida.
+            <p class="warning-message" v-if="warnings.password != null">
+              {{ warnings.password }}
             </p>
           </div>
           
@@ -64,8 +64,8 @@
           </div>
           <div class="form-item">
             <input type="password" name="senha2" size="20" v-model="form.confirmPassword" />
-            <p class="warning-message" v-if="valid.confirmPassword === false">
-              As senhas inseridas não correspondem.
+            <p class="warning-message" v-if="warnings.confirmPassword != null">
+              {{ warnings.confirmPassword }}
             </p>
           </div>
           
@@ -87,8 +87,8 @@
               v-model="form.accountType"
             />
             Empresa
-          <p class="warning-message" v-if="valid.accountType === false">
-            O tipo da conta precisa ser selecionado.
+          <p class="warning-message" v-if="warnings.accountType != null">
+              {{ warnings.accountType }}
           </p>
           </div>
           
@@ -103,8 +103,8 @@
               :disabled="form.accountType !== userTypes.applicant"
               v-model="form.cpf"
             >
-            <p class="warning-message" v-if="valid.cpf === false">
-              O CPF inserido não é válido.
+            <p class="warning-message" v-if="warnings.cpf != null">
+              {{ warnings.cpf }}
             </p>
           </div>
           
@@ -119,8 +119,8 @@
               :disabled="form.accountType !== userTypes.corporation"
               v-model="form.corporateName"
             />
-            <p class="warning-message" v-if="valid.corporateName === false">
-              A Razão Social inserida não é válida.
+            <p class="warning-message" v-if="warnings.corporateName != null">
+              {{ warnings.corporateName }}
             </p>
           </div>
           
@@ -136,8 +136,8 @@
               :disabled="form.accountType !== userTypes.corporation"
               v-model="form.cnpj"
             />
-            <p class="warning-message" v-if="valid.cnpj === false">
-              O CNPJ inserido não é válida.
+            <p class="warning-message" v-if="warnings.cnpj != null">
+              {{ warnings.cnpj }}
             </p>
           </div>
           
@@ -170,9 +170,10 @@ export default {
       corporateName: null,
       cnpj: null
     },
-    valid: {
+    warnings: {
       name: null,
       address: null,
+      phone: null,
       email: null,
       password: null,
       confirmPassword: null,
@@ -199,8 +200,8 @@ export default {
       }
     },
     fieldsAreValid() {
-      for (const key in this.valid) {
-        if (this.valid[key] !== true) {
+      for (const key in this.warnings) {
+        if (this.warnings[key] != null) {
           return false;
         }
       }
@@ -220,52 +221,103 @@ export default {
     },
     validateName() {
       // placeholder
-      this.valid.name = this.form.name?.length > 1 && this.form.name?.length < 100;
+      if (this.form.name == null || this.form.name?.length < 1) {
+        this.warnings.name = 'O nome precisa ser preenchido.';
+        return;
+      }
+      if (this.form.name.length > 100) {
+        this.warnings.name = 'O nome é longo demais.';
+        return;
+      }
+      this.warnings.name = null;
     },
     validateAddress() {
       // placeholder
-      this.valid.address = this.form.address?.length > 1 && this.form.address?.length < 100;
+      if (this.form.address == null || this.form.address?.length < 1) {
+        this.warnings.address = 'O endereço precisa ser preenchido.';
+        return;
+      }
+      if (this.form.address.length > 100) {
+        this.warnings.address = 'O endereço é longo demais.';
+        return;
+      }
+      this.warnings.address = null;
     },
     validatePhone() {
       // placeholder
-      this.valid.phone = this.form.phone?.length >= 8 && this.form.phone?.length <= 12;
+      if (this.form.phone == null || this.form.phone?.length < 1) {
+        this.warnings.phone = 'O número precisa ser preenchido.';
+        return;
+      }
+      if (this.form.phone.length > 12) {
+        this.warnings.phone = 'O número é longo demais.';
+        return;
+      }
+      this.warnings.phone = null;
     },
     validateEmail() {
       // placeholder
-      this.valid.email = this.form.email?.length > 1 && this.form.email?.length < 100;
+      if (this.form.email == null || this.form.email?.length < 1) {
+        this.warnings.email = 'O email precisa ser preenchido.';
+        return;
+      }
+      if (this.form.email.length > 100) {
+        this.warnings.email = 'O email é longo demais.';
+        return;
+      }
+      this.warnings.email = null;
     },
     validatePassword() {
       // placeholder
-      this.valid.password = this.form.password?.length > 1 && this.form.password?.length < 100;
+      if (this.form.password == null || this.form.password?.length < 1) {
+        this.warnings.password = 'A senha precisa ser preenchida.';
+        return;
+      }
+      if (this.form.password.length > 100) {
+        this.warnings.password = 'A senha é longa demais.';
+        return;
+      }
+      this.warnings.password = null;
     },
     validateConfirmPassword() {
-      this.valid.confirmPassword = this.form.password === null || this.form.confirmPassword === this.form.password;
+      if (this.form.password == null || this.form.password.length === 0) {
+        this.warnings.confirmPassword = null;
+        return;
+      }
+      if (this.form.confirmPassword !== this.form.password) {
+        this.warnings.confirmPassword = 'As senhas inseridas não correspondem.';
+        return;
+      }
+      this.warnings.confirmPassword = null;
     },
     validateAccountType() {
-      this.valid.accountType = this.form.accountType === this.userTypes.applicant || this.form.accountType === this.userTypes.corporation;
+      if (!(this.form.accountType === this.userTypes.applicant || this.form.accountType === this.userTypes.corporation)) {
+        this.warnings.accountType = 'O tipo da conta precisa ser selecionado.';
+        return;
+      }
+      this.warnings.accountType = null;
     },
     validateCpf() {
       if (this.form.accountType != this.userTypes.applicant) {
-        this.valid.cpf = true;
+        this.warnings.cpf = null;
         return;
       }
 
-      if (this.form.cpf == null) {
-        this.valid.cpf = false;
+      if (this.form.cpf == null || this.form.cpf.length === 0) {
+        this.warnings.cpf = 'O CPF precisa ser preenchido.';
         return;
       }
 
       const pattern = /^\d{11}$/;
       if (!pattern.test(this.form.cpf)) {
-        this.valid.cpf = false;
+        this.warnings.cpf = 'O CPF inserido não é válido.';
         return;
       }
 
       let firstSum = 0;
       let secondSum = 0;
 
-      for (let i = 0; i <= 9; i++)
-      {
+      for (let i = 0; i <= 9; i++) {
         if (i < 9) {
           firstSum += +this.form.cpf[i] * (i + 1);
         }
@@ -276,33 +328,47 @@ export default {
       const firstVerifyingDigit = (firstSum % 11) % 10;
       const secondVerifyingDigit = (secondSum % 11) % 10;
 
-      this.valid.cpf = (+this.form.cpf[9] == firstVerifyingDigit && +this.form.cpf[10] == secondVerifyingDigit);
+      if(!(+this.form.cpf[9] === firstVerifyingDigit && +this.form.cpf[10] === secondVerifyingDigit)) {
+        this.warnings.cpf = 'O CPF inserido não é válido.';
+      }
+      this.warnings.cpf = null;
     },
     validateCorporateName() {
-      this.valid.corporateName = this.form.accountType !== this.userTypes.corporation || this.form.corporateName?.length > 1 && this.form.corporateName?.length < 100;
+      if (this.form.accountType !== this.userTypes.corporation) {
+        this.warnings.corporateName = null;
+        return;
+      }
+      if (this.form.corporateName == null || this.form.corporateName?.length === 0) {
+        this.warnings.corporateName = 'A Razão Social precisa ser preenchida.';
+        return;
+      }
+      if (this.form.corporateName.length > 100) {
+        this.warnings.corporateName = 'A Razão Social é longa demais.';
+        return;
+      }
+      this.warnings.corporateName = null;
     },
     validateCnpj() {
       if (this.form.accountType !== this.userTypes.corporation) {
-        this.valid.cnpj = true;
+        this.warnings.cnpj = null;
         return;
       }
 
-      if (this.form.cnpj == null) {
-        this.valid.cnpj = false;
+      if (this.form.cnpj == null || this.form.cnpj.length === 0) {
+        this.warnings.cnpj = 'O CNPJ precisa ser preenchido.';
         return;
       }
 
       const pattern = /^\d{14}$/;
       if (!pattern.test(this.form.cnpj)) {
-        this.valid.cnpj = false;
+        this.warnings.cnpj = 'O CNPJ inserido não é válido.';
         return;
       }
 
       const weights = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
 
       let firstSum = 0;
-      for (let i = 0; i < 12; i++)
-      {
+      for (let i = 0; i < 12; i++) {
         firstSum += +this.form.cnpj[i] * weights[i + 1];
       }
 
@@ -310,15 +376,17 @@ export default {
       const firstVerifyingDigit = firstRemainder < 2 ? 0 : 11 - firstRemainder;
 
       let secondSum = 0;
-      for (let i = 0; i < 13; i++)
-      {
+      for (let i = 0; i < 13; i++) {
         secondSum += +this.form.cnpj[i] * weights[i];
       }
 
       const secondRemainder = secondSum % 11;
       const secondVerifyingDigit = secondRemainder < 2 ? 0 : 11 - secondRemainder;
 
-      this.valid.cnpj = (+this.form.cnpj[12] == firstVerifyingDigit && +this.form.cnpj[13] == secondVerifyingDigit);
+      if (!(+this.form.cnpj[12] === firstVerifyingDigit && +this.form.cnpj[13] === secondVerifyingDigit)) {
+        this.warnings.cnpj = 'O CNPJ inserido não é válido.';
+      }
+      this.warnings.cnpj = null;
     }
   },
   created() {
